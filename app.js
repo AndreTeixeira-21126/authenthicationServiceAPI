@@ -1,4 +1,13 @@
 const express = require('express')
-const app = express()
+const authRouter = require('./routers/auth.router')
 
-module.exports = app
+function createApp() {
+    
+    const app = express()
+    const authenthicationRouter = authRouter.buildRouter()
+    app.use(express.json())
+    app.use('/auth', authenthicationRouter)
+    return app
+}
+
+module.exports = createApp

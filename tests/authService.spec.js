@@ -1,11 +1,11 @@
 const app = require('../app')
-const request = require('supertest')(app)
+const request = require('supertest')(app())
 
 describe('POST /auth/register', () => {
   it('should return 201 when the user is created', async () => {
     const response = await request.post('/auth/register').send({
       email: 'test@test.com',
-      confirmPasword: '123456',
+      confirmPassword: '123456',
       password: '123456'
     })
     expect(response.status).toBe(201)
